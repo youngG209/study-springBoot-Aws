@@ -66,4 +66,32 @@ public class PostsRepositoryTest {
         assertThat(posts.getCreatedDate()).isAfter(now);
         assertThat(posts.getModifiedDate()).isAfter(now);
     }
+
+    @Test
+    public void testFindAllDesc() {
+        //given
+        String title = "title1";
+        String title2 = "title2";
+
+        LocalDateTime now = LocalDateTime.of(2021, 11, 11, 0, 0, 0);
+        postsRepository.save(Posts.builder()
+                .title("title1")
+                .content("content1")
+                .author("author1")
+                .build());
+        postsRepository.save(Posts.builder()
+                .title("title2")
+                .content("content2")
+                .author("author2")
+                .build());
+        //when
+        List<Posts> postsList = postsRepository.findAllDesc();
+
+        //then
+        for (Posts posts : postsList) {
+
+            System.out.println(">>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate=" + posts.getModifiedDate());
+
+        }
+    }
 }
