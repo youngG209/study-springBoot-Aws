@@ -128,30 +128,30 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }
 
-    @Test
-    @WithMockUser(roles = "USER")
-    public void deletePosts() throws Exception {
-        //given
-        Posts savedPosts = postsRepository.save(Posts.builder()
-                .title("title")
-                .content("content")
-                .author("author")
-                .build()
-        );
-
-        Long deleteId = savedPosts.getId();
-
-        String url = "http://localhost:" + port + "/api/v1/posts/"+deleteId;
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity httpEntity = new HttpEntity(headers);
-
-        //when
-//        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Long.class);
-        ResultActions resultActions = mvc.perform(delete(url)
-                                .contentType(MediaType.APPLICATION_JSON)
-//                        .content(new ObjectMapper().writeValueAsString(requestDto))
-                )
-                .andExpect(status().isOk());
-
-    }
+//    @Test
+//    @WithMockUser(roles = "USER")
+//    public void deletePosts() throws Exception {
+//        //given
+//        Posts savedPosts = postsRepository.save(Posts.builder()
+//                .title("title")
+//                .content("content")
+//                .author("author")
+//                .build()
+//        );
+//
+//        Long deleteId = savedPosts.getId();
+//
+//        String url = "http://localhost:" + port + "/api/v1/posts/"+deleteId;
+//        HttpHeaders headers = new HttpHeaders();
+//        HttpEntity httpEntity = new HttpEntity(headers);
+//
+//        //when
+////        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Long.class);
+//        ResultActions resultActions = mvc.perform(delete(url)
+//                                .contentType(MediaType.APPLICATION_JSON)
+////                        .content(new ObjectMapper().writeValueAsString(requestDto))
+//                )
+//                .andExpect(status().isOk());
+//
+//    }
 }
