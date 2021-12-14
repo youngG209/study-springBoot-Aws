@@ -56,14 +56,6 @@ jobs:
 
 
       # Deploy
-      - name: Deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{  secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws deploy create-deployment \
-          --application-name springboot-intro \
-          --deployment-group-name springboot-intro-deploy-group \
-          --file-exists-behavior OVERWRITE \
-          --s3-location bucket=github-action-build2,bundleType=zip,key=study-springBoot-Aws.zip \
-          --region ap-northeast-2
+      - name: Code Deploy
+        run: aws deploy create-deployment --application-name springboot-intro --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name springboot-intro-deploy-group --s3-location bucket=github-action-build2,bundleType=zip,key=study-springBoot-Aws.zip
+
