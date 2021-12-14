@@ -65,5 +65,5 @@ jobs:
           --application-name springboot-intro \
           --deployment-group-name springboot-intro-deploy-group \
           --file-exists-behavior OVERWRITE \
-          --s3-location bucket=springboot-intro-build,bundleType=zip,key=springboot-intro-build.zip \
+          --s3-location bucket=github-action-build2,bundleType=zip,key=study-springBoot-Aws.zip \
           --region ap-northeast-2
