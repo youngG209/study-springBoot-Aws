@@ -57,5 +57,5 @@ jobs:
 
       # Deploy
       - name: Code Deploy
-        run: aws deploy create-deployment --application-name springboot-intro --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name springboot-intro-deploy-group --s3-location bucket=github-action-build2,bundleType=zip,key=study-springBoot-Aws.zip
+        run: aws deploy create-deployment --application-name springboot-intro --deployment-group-name springboot-intro-deploy-group --file-exists-behavior OVERWRITE --s3-location bucket=github-action-build2,bundleType=zip,key=study-springBoot-Aws.zip
 
